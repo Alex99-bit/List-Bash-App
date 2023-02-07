@@ -51,7 +51,7 @@ void Shutdown::apaga(){
 void Shutdown::timePersonalizado(){
 	// time ya esta en minutos
 	for(int i=(time-1);i>=0;i--){
-		for(int j=60;j>0;j--){
+		for(int j=59;j>0;j--){
 			
 			// Esto es solo para darle mayor detalle al timer
 			if(j<10 && i<10){
