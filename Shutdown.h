@@ -50,9 +50,24 @@ void Shutdown::apaga(){
 
 void Shutdown::timePersonalizado(){
 	// time ya esta en minutos
-	for(int i=time;i>0;i--){
+	for(int i=(time-1);i>=0;i--){
 		for(int j=60;j>0;j--){
-			cout<<"\n\n\tTiempo para apagar: "<<i<<" : "<<j<<endl;
+			
+			// Esto es solo para darle mayor detalle al timer
+			if(j<10 && i<10){
+				cout<<"\n\n\tTiempo para apagar: 0"<<i<<":0"<<j<<endl;
+			}else{
+				if(j<10 && i>=10){
+					cout<<"\n\n\tTiempo para apagar: "<<i<<":0"<<j<<endl;
+				}else{
+					if(j>=10 && i<10){
+						cout<<"\n\n\tTiempo para apagar: 0"<<i<<":"<<j<<endl;
+					}else{
+						cout<<"\n\n\tTiempo para apagar: "<<i<<":"<<j<<endl;
+					}
+				}
+			}
+			
 			cout<<"\n\t**NOTA: Si cierra el programa, se cancelara la operacion**";
 			Sleep(1000);
 			system("cls");
