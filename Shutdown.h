@@ -8,6 +8,7 @@ class Shutdown{
 		void apaga();
 		void cancela();
 		void setTime();
+		void timePersonalizado();
 };
 
 void Shutdown::setTime(){
@@ -37,16 +38,27 @@ void Shutdown::apaga(){
 		case 4: // Lo ingresa manual
 			cout<<"\n\tIngrese el tiempo en minutos: ";
 			cin>>time;
-			time = time*60;
-			cout<<"\n\n\t**NOTA: Si cierra el programa, se cancelara la operacion**";
-			Sleep(time*1000);
-			system("shutdown /s");
+			//time = time*60;
+			timePersonalizado();
 		break;
 		case 5:
 			system("call Lista_comandos.exe");
 			exit(0);
 		break;
 	}
+}
+
+void Shutdown::timePersonalizado(){
+	// time ya esta en minutos
+	for(int i=time;i>0;i--){
+		for(int j=60;j>0;j--){
+			cout<<"\n\n\tTiempo para apagar: "<<i<<" : "<<j<<endl;
+			cout<<"\n\t**NOTA: Si cierra el programa, se cancelara la operacion**";
+			Sleep(1000);
+			system("cls");
+		}
+	}
+	system("shutdown /s");
 }
 
 void Shutdown::cancela(){
