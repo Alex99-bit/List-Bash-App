@@ -73,7 +73,7 @@ void Shutdown::timePersonalizado(){
 			system("cls");
 		}
 	}
-	system("shutdown /s");
+	system("shutdown /s /t 0");
 }
 
 void Shutdown::cancela(){
