@@ -3,6 +3,7 @@
 class Shutdown{
 	private:
 		int time;
+		char aux;
 		string comand;
 	public:
 		void apaga();
@@ -16,7 +17,32 @@ void Shutdown::setTime(){
 		system("cls");
 		cout<<"\n\tIngresa una opcion de apagado:\n\n";
 		cout<<"\t1.- 15 min\n\t2.- 30 min\n\t3.- 1 hora\n\t4.- Ingresar manual\n\t5.- Regresar\n\n\n\t>> ";
-		cin>>time;
+		cin>>aux;
+		
+		/*cout<<"aux = "<<int(aux)<<endl;
+		system("pause");*/
+		
+		// Con el este bloque de codigo se evita que se buguee en caso de introducir un caracter y no un numero
+		// Se hace la conversion para el time
+		switch(aux){
+			case 49:
+				time = 1;
+				break;
+			case 50:
+				time = 2;
+				break;
+			case 51:
+				time = 3;
+				break;
+			case 52:
+				time = 4;
+				break;
+			case 53:
+				time = 5;
+				break;
+			default:
+				time = 10;
+		}
 	}while(time<1 || time>5);
 }
 

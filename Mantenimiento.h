@@ -2,6 +2,7 @@
 class Mantenimiento{
 	private:
 		short int opc;
+		char aux;
 		void mantSO();
 		void mantHDD();
 	public:
@@ -23,7 +24,24 @@ void Mantenimiento::menu(){
 		cout<<"\n\tMantenimiento: (Es necesario ejecutar como administrador)\n\n\t1.-Sistema\n\t2.-Unidad de almacenamiento (C:)";
 		cout<<"\n\t3.-Regresar";
 		cout<<"\n\n\t>> ";
-		cin>>opc;
+		cin>>aux;
+		
+		switch(aux){
+			case 49:
+				opc = 1;
+				break;
+			
+			case 50:
+				opc = 2;
+				break;
+				
+			case 51:
+				opc = 3;
+				break;
+				
+			default:
+				opc = 10;
+		}
 		
 		switch(opc){
 			case 1:
