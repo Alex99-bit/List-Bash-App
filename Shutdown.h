@@ -17,7 +17,7 @@ void Shutdown::setTime(){
 	do{
 		system("cls");
 		cout<<"\n\tIngresa una opcion de apagado:\n\n";
-		cout<<"\t1.- 15 min\n\t2.- 30 min\n\t3.- 1 hora\n\t4.- Ingresar manual\n\t5.- Regresar\n\n\n\t>> ";
+		cout<<"\t1.- Ingresar manual\n\t2.- Regresar\n\n\n\t>> ";
 		cin>>aux;
 		
 		/*cout<<"aux = "<<int(aux)<<endl;
@@ -32,26 +32,17 @@ void Shutdown::setTime(){
 			case 50:
 				time = 2;
 				break;
-			case 51:
-				time = 3;
-				break;
-			case 52:
-				time = 4;
-				break;
-			case 53:
-				time = 5;
-				break;
 			default:
 				time = 10;
 		}
-	}while(time<1 || time>5);
+	}while(time<1 || time>2);
 }
 
 void Shutdown::apaga(){
-	char var[15];
+	//char var[15];
 	
-	strcpy(var, "shutdown /s /t 900 ");
-	switch(time){
+	//strcpy(var, "shutdown /s /t 900 ");
+	/*switch(time){
 		case 1: // 15 min = 900s
 			system(var);
 			cout<<"\n\tSe establecio el apagado en 15 min";
@@ -74,6 +65,19 @@ void Shutdown::apaga(){
 			system("call Lista_comandos.exe");
 			exit(0);
 		break;
+	}*/
+	
+	switch(time){
+		case 1: // Lo ingresa manual
+			cout<<"\n\tIngrese el tiempo en minutos: ";
+			cin>>time;
+			//time = time*60;
+			timePersonalizado();
+		break;
+		case 2:
+			system("call Lista_comandos.exe");
+			exit(0);
+		break;
 	}
 }
 
@@ -86,7 +90,8 @@ void Shutdown::timePersonalizado(){
 	
 	system(var);
 	
-	for(int i=(time-1);i>=0;i--){
+	cout<<"\n\tSe apagara en: "<<time<<" minutos..."<<endl;
+	/*for(int i=(time-1);i>=0;i--){
 		for(int j=59;j>0;j--){
 			
 			// Esto es solo para darle mayor detalle al timer
@@ -104,11 +109,11 @@ void Shutdown::timePersonalizado(){
 				}
 			}
 			
-			cout<<"\n\t**NOTA: Si cierra el programa, se cancelara la operacion**";
+			cout<<"\n\t**NOTA: Puede cerrar el programa**";
 			Sleep(1000);
 			system("cls");
 		}
-	}
+	}*/
 }
 
 void Shutdown::cancela(){
