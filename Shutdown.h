@@ -1,3 +1,4 @@
+#include <string.h>
 
 // Esta clase es para los comandos de shutdown
 class Shutdown{
@@ -47,10 +48,12 @@ void Shutdown::setTime(){
 }
 
 void Shutdown::apaga(){
+	char var[15];
 	
+	strcpy(var, "shutdown /s /t 900 ");
 	switch(time){
 		case 1: // 15 min = 900s
-			system("shutdown /s /t 900 ");
+			system(var);
 			cout<<"\n\tSe establecio el apagado en 15 min";
 		break;
 		case 2: // 30 min = 1800s
@@ -76,6 +79,13 @@ void Shutdown::apaga(){
 
 void Shutdown::timePersonalizado(){
 	// time ya esta en minutos
+	char var[50];
+	int auxTime = 0;
+	auxTime = time * 60;
+	sprintf(var, "shutdown /s /t %d", auxTime);
+	
+	system(var);
+	
 	for(int i=(time-1);i>=0;i--){
 		for(int j=59;j>0;j--){
 			
@@ -99,7 +109,6 @@ void Shutdown::timePersonalizado(){
 			system("cls");
 		}
 	}
-	system("shutdown /s /t 0");
 }
 
 void Shutdown::cancela(){
